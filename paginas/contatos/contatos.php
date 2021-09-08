@@ -27,8 +27,8 @@
     <tbody>
         <?php
             $quantidade = 10;
-            $pagina = ( isset($_GET['pagina']) ) ?(int)$_GET['paina']:1;
-            $inicio = ($quantidade * 1) - $quantidade;
+            $pagina = ( isset($_GET['pagina']) ) ?(int)$_GET['pagina']:1;
+            $inicio = ($quantidade * $pagina) - $quantidade;
 
             $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
 
@@ -51,7 +51,7 @@
             nomeContato LIKE '%{$txt_pesquisa}%' ORDER BY nomeContato ASC 
             LIMIT $inicio, $quantidade
             ";
-            
+            //echo $sql;
             $rs = mysqli_query($conexao,$sql) 
             or die("Erro ao executar a consulta! Erro:" . mysqli_error($conexao));
 
@@ -95,15 +95,32 @@
         echo "Total de registros: " . $numTotal . " <br> ";
 
         echo '<a href="?menuop=contatos&pagina=1">Primeira Pagina</a>';
+
+        if($pagina>6){
+            ?>
+            <a href="?menuop=contatos&pagina=<?php echo $pagina-1?>"><<</a>
+            <?php
+        }
+
+
         for($i=1;$i<=$totalPagina;$i++){
+            
+           if($i>=($pagina-5) && $i <= ($pagina+5)){
             if($i==$pagina){
                 echo $i;
             }else{
-                echo "<a href=\"?menuop=contatos&pagina={$i}\">{$i}</a>";
+                echo "<a href=\"?menuop=contatos&pagina={$i}\"> {$i} </a>";
 
             }
+           }
         }
-        echo "<a href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Pagina</a>";
+
+        if($pagina<$totalPagina-5){
+            ?>
+            <a href="?menuop=contatos&pagina=<?php echo $pagina+1?>">>></a>
+            <?php
+        }
+        echo " <a href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Pagina</a>";
 
 
 ?>

@@ -5,23 +5,35 @@ include("./db/conexao.php");
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/estilo-padrao.css">
     <title>Sistema Agendador 1.0</title>
 </head>
 <body>
-    <header>
-        <h1>Sistema Agendador 1.0</h1>
-        <nav>
-            <a href="index.php?menuop=home">Home</a> | 
-            <a href="index.php?menuop=contatos">Contato</a> | 
-            <a href="index.php?menuop=tarefas">Tarefas</a> | 
-            <a href="index.php?menuop=eventos">Eventos</a> | 
+    <header class="bg-dark">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a href="#" class="navbar-brand">
+                    <img src="./img/logo_agendador.png" alt="sis-Agendador" width="120">
+                </a>
 
-        </nav>
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a href="index.php?menuop=home" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="index.php?menuop=contatos" class="nav-link">Contato</a></li>
+                        <li class="nav-item"><a href="index.php?menuop=tarefas" class="nav-link">Tarefas</a></li>
+                        <li class="nav-item"><a href="index.php?menuop=eventos" class="nav-link">Eventos</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <main>
-        <hr>
+   <div class="container">
 <?php
     $menuop = (isset($_GET['menuop']))?$_GET['menuop']:'home';
     switch($menuop){
@@ -55,11 +67,15 @@ include("./db/conexao.php");
         default:
             include("./paginas/home/home.php");
             break;
-              
-    }
+   }
 
 ?>
+</div>
     </main>
-
+    <footer class="container-fluid fixed-bottom bg-dark text-light">
+        <div class="text-center">SIS Agendador v 1.0</div>
+    </footer>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 </html>
