@@ -10,6 +10,7 @@
         <input type="submit" value="Pesquisar">
     </form>
 </div>
+
 <table border="1">
     <thead>
         <tr>
@@ -83,7 +84,8 @@
         ?>
     </tbody>
 </table>
-<br>
+
+
 <?php
 
         $sqlTotal = "SELECT idContato FROM tbcontatos";
