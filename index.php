@@ -74,7 +74,7 @@
 ?>
 </div>
     </main>
-    <footer class="container-fluid fixed-bottom bg-dark text-light">
+    <footer class="container-fluid bg-dark text-light">
         <div class="text-center">SIS Agendador v 1.0</div>
     </footer>
 <!-- Option 1: Bootstrap Bundle with Popper -->

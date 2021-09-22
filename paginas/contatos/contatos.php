@@ -10,8 +10,8 @@
         <input type="submit" value="Pesquisar">
     </form>
 </div>
-
-<table border="1">
+<div class="tabela">
+<table class="table table-dark table-striped table-bordered table-sm">
     <thead>
         <tr>
             <th>ID</th>
@@ -63,7 +63,7 @@
         ?>
         <tr>
             <td><?=$dados['idContato']?></td>
-            <td><?=$dados['nomeContato']?></td>
+            <td class="text-nowrap"><?=$dados['nomeContato']?></td>
             <td><?=$dados['emailContato']?></td>
             <td><?=$dados['telefoneContato']?></td>
             <td><?=$dados['enderecoContato']?></td>
@@ -84,8 +84,9 @@
         ?>
     </tbody>
 </table>
+</div>
 
-
+<ul class="pagination justify-content-center">
 <?php
 
         $sqlTotal = "SELECT idContato FROM tbcontatos";
@@ -94,13 +95,13 @@
 
         $totalPagina = ceil($numTotal / $quantidade);
 
-        echo "Total de registros: " . $numTotal . " <br> ";
+        echo "<li class='page-item'><span class='page-link'>Total de registros: " . $numTotal . " </span></li> ";
 
-        echo '<a href="?menuop=contatos&pagina=1">Primeira Pagina</a>';
+        echo '<li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=1">Primeira Pagina</a></li>';
 
         if($pagina>6){
             ?>
-            <a href="?menuop=contatos&pagina=<?php echo $pagina-1?>"><<</a>
+            <li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=<?php echo $pagina-1?>"><<</a></li>
             <?php
         }
 
@@ -109,9 +110,9 @@
             
            if($i>=($pagina-5) && $i <= ($pagina+5)){
             if($i==$pagina){
-                echo $i;
+                echo "<li class='page-item active'><span class='page-link'>$i</span></li>";
             }else{
-                echo "<a href=\"?menuop=contatos&pagina={$i}\"> {$i} </a>";
+                echo "<li class='page-item'><a class='page-link' href=\"?menuop=contatos&pagina={$i}\"> {$i} </a></li>";
 
             }
            }
@@ -119,10 +120,11 @@
 
         if($pagina<$totalPagina-5){
             ?>
-            <a href="?menuop=contatos&pagina=<?php echo $pagina+1?>">>></a>
+            <li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=<?php echo $pagina+1?>">>></a></li>
             <?php
         }
-        echo " <a href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Pagina</a>";
+        echo "<li class='page-item'> <a class='page-link' href=\"?menuop=contatos&pagina=$totalPagina\">Ultima Pagina</a></li>";
 
 
 ?>
+</ul>
