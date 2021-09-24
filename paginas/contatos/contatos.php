@@ -1,13 +1,15 @@
 <header>
-    <h3>Contatos</h3>
+    <h3><i class="bi bi-person-square"></i> Contatos</h3>
 </header>
 <div>
-    <a href="?menuop=cad-contato">Novo Contato</a>
+    <a class="btn btn-outline-secondary mb-2" href="?menuop=cad-contato"><i class="bi bi-person-plus-fill"></i> Novo Contato</a>
 </div>
 <div>
     <form action="index.php?menuop=contatos" method="post">
         <input type="text" name="txt_pesquisa">
-        <input type="submit" value="Pesquisar">
+      
+
+        <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
     </form>
 </div>
 <div class="tabela">
@@ -64,17 +66,17 @@
         <tr>
             <td><?=$dados['idContato']?></td>
             <td class="text-nowrap"><?=$dados['nomeContato']?></td>
-            <td><?=$dados['emailContato']?></td>
-            <td><?=$dados['telefoneContato']?></td>
-            <td><?=$dados['enderecoContato']?></td>
+            <td class="text-nowrap"><?=$dados['emailContato']?></td>
+            <td class="text-nowrap"><?=$dados['telefoneContato']?></td>
+            <td class="text-nowrap"><?=$dados['enderecoContato']?></td>
             <td><?=$dados['sexoContato']?></td>
             <td><?=$dados['dataNascContato']?></td>
-            <td>
-                <a href="index.php?menuop=editar-contato&idContato=<?=$dados['idContato']?>">Editar</a>
+            <td class="text-center">
+                <a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-contato&idContato=<?=$dados['idContato']?>"><i class="bi bi-pencil-square"></i></a>
                 
             </td>
-            <td>
-                <a href="index.php?menuop=excluir-contato&idContato=<?=$dados['idContato']?>">Excluir</a>    
+            <td class="text-center">
+                <a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-contato&idContato=<?=$dados['idContato']?>"><i class="bi bi-trash-fill"></i></a>    
             </td>
             
 
