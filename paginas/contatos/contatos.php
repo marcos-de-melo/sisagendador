@@ -6,10 +6,11 @@
 </div>
 <div>
     <form action="index.php?menuop=contatos" method="post">
-        <input type="text" name="txt_pesquisa">
-      
-
-        <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
+        <div class="input-group">
+            <input class="form-control" type="text" name="txt_pesquisa">
+            <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
+        </div>
+       
     </form>
 </div>
 <div class="tabela">
