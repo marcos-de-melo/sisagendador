@@ -13,36 +13,71 @@ $dados = mysqli_fetch_assoc($rs);
 </header>
 <div>
     <form action="index.php?menuop=atualizar-contato" method="post">
-        <div>
-            <label for="nomeContato">ID</label>
-            <input type="text" name="idContato" value="<?=$dados['idContato']?>">
+        <div class="mb-3 col-3">
+            <label class="form-label" for="nomeContato">ID</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-key-fill"></i>
+                </span>
+            <input class="form-control" type="text" name="idContato" value="<?=$dados['idContato']?>" readonly>
+            </div>
         </div>
-        <div>
-            <label for="nomeContato">Nome</label>
-            <input type="text" name="nomeContato" value="<?=$dados['nomeContato']?>">
+        <div class="mb-3">
+            <label class="form-label" for="nomeContato">Nome</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-person-fill"></i>
+                </span>
+                <input class="form-control" type="text" name="nomeContato" value="<?=$dados['nomeContato']?>">
+            </div>
         </div>
-        <div>
-            <label for="emailContato">E-Mail</label>
-            <input type="email" name="emailContato" value="<?=$dados['emailContato']?>">
+        <div class="mb-3">
+            <label class="form-label" for="emailContato">E-Mail</label>
+            <div class="input-group">
+                <span class="input-group-text">@</span>
+                <input class="form-control" type="email" name="emailContato" value="<?=$dados['emailContato']?>">
+            </div>
         </div>
-        <div>
-            <label for="telefoneContato">Telefone</label>
-            <input type="text" name="telefoneContato" value="<?=$dados['telefoneContato']?>">
+        <div class="mb-3">
+            <label class="form-label" for="telefoneContato">Telefone</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-telephone-fill"></i>
+                </span>
+                <input class="form-control" type="text" name="telefoneContato" value="<?=$dados['telefoneContato']?>">
+            </div>
         </div>
-        <div>
-            <label for="enderecoContato">Endereço</label>
-            <input type="text" name="enderecoContato" value="<?=$dados['enderecoContato']?>">
+        <div class="mb-3">
+            <label class="form-label" for="enderecoContato">Endereço</label>
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-mailbox2"></i>
+                </span>
+                <input class="form-control" type="text" name="enderecoContato" value="<?=$dados['enderecoContato']?>">
+            </div>
         </div>
-        <div>
-            <label for="sexoContato">Sexo</label>
-            <input type="text" name="sexoContato" value="<?=$dados['sexoContato']?>">
-        </div>
-        <div>
-            <label for="dataNascContato">Data de Nasc.</label>
-            <input type="date" name="dataNascContato" value="<?=$dados['dataNascContato']?>">
-        </div>
-        <div>
-            <input type="submit" value="Atualizar" name="btnAtualizar">
+        <div class="row mb-3">
+                        <div class="mb-3 col-3">
+                            <label class="form-label" for="sexoContato">Sexo</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-gender-ambiguous"></i>
+                                </span>
+                            <select class="form-select"  name="sexoContato" id="sexoContato">
+                                <option <?php echo ($dados['sexoContato']=='')?'selected':'' ?> value="">Selecione o genero do Contato</option>
+                                <option <?php echo ($dados['sexoContato']=='M')?'selected':''?> value="M">Masculino</option>
+                                <option <?php echo ($dados['sexoContato']=='F')?'selected':''?> value="F">Feminino</option>
+                                <option <?php echo ($dados['sexoContato']=='O')?'selected':''?> value="O">Outros</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label" for="dataNascContato">Data de Nasc.</label>
+                            <input class="form-control" type="date" name="dataNascContato" value="<?=$dados['dataNascContato']?>">
+                        </div>
+                        </div>
+        <div class="mb-3">
+            <input class="btn btn-warning" type="submit" value="Atualizar" name="btnAtualizar">
         </div>
     </form>
 </div>
