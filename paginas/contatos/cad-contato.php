@@ -2,19 +2,33 @@
     <h3><i class="bi bi-person-square"></i> Cadastro de Contato</h3>
 </header>
 <div>
-    <form action="index.php?menuop=inserir-contato" method="post">
+    <form class="needs-validation" action="index.php?menuop=inserir-contato" method="post" novalidate>
         <div class="mb-3">
             <label class="form-label" for="nomeContato">Nome</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input class="form-control" type="text" name="nomeContato">
+                <input class="form-control" type="text" name="nomeContato" required>
+               
+                <div class="valid-feedback">
+                        teste
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
             </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="emailContato">E-Mail</label>
             <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input class="form-control" type="email" name="emailContato">
+                <input class="form-control" type="email" name="emailContato" required>
+                
+                <div class="valid-tooltip">
+                        teste
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
             </div>
 
         </div>
@@ -22,7 +36,7 @@
             <label class="form-label" for="telefoneContato">Telefone</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                <input class="form-control" type="text" name="telefoneContato">
+                <input class="form-control" type="text" name="telefoneContato" required>
             </div>
         </div>
         <div class="mb-3">
