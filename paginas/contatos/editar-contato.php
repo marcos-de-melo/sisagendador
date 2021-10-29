@@ -4,15 +4,13 @@ $sql = "SELECT * FROM tbcontatos WHERE idContato = '{$idContato}'";
 $rs = mysqli_query($conexao,$sql) or die("Erro ao recuperar os dados do registro." . mysqli_error($conexao));
 
 $dados = mysqli_fetch_assoc($rs);
-
-
 ?>
 
 <header>
     <h3>Editar Contato</h3>
 </header>
 <div class="row">
-<div class="col-12 col-md-6">
+<div class="col-6" >
     <form action="index.php?menuop=atualizar-contato" method="post">
         <div class="mb-3 col-3">
             <label class="form-label" for="nomeContato">ID</label>
@@ -82,46 +80,46 @@ $dados = mysqli_fetch_assoc($rs);
         </div>
     </form>
 </div>
-
-<div class="col-12 col-md-6">
+<div class="col-6">
+    <?php
+       if($dados["nomeFotoContato"]=="" || !file_exists('./paginas/contatos/fotos-contatos/'. $dados["nomeFotoContato"])){
+            $nomeFoto = "SemFoto.jpg";
+       }else{
+            $nomeFoto = $dados["nomeFotoContato"];
+       }
+    ?>
     <div class="mb-3">
-        <?php
-        // v ou v
-         if($dados['nomeFotoContato']=="" || !file_exists('./paginas/contatos/fotos-contatos/' . $dados['nomeFotoContato'])){
-             $foto = "SemFoto.jpg";
-         }else{
-            $foto = $dados['nomeFotoContato'];
-         }
-        
-        ?>
-        <img id="foto_contato"  src="./paginas/contatos/fotos-contatos/<?=$foto?>" class="img-fluid img-thumbnail" alt="...">
- </div>
-  
-  <div>
-        <form action="" method="post" id="form_upload_contato" enctype="multipart/form-data">
-             	<input name="idContato" type="hidden" value="<?=$idContato?>">
-             	<input name="nomeFotoContato" type="hidden" value="<?=$dados['nomeFotoContato']?>">
-             	<input type="file" name="arquivo">
-             	<input type="submit" name="enviar" value="Enviar" id="btn_enviar_contato">
-        </form>
-             	<div class="mb-3" id="mensagem"></div>
-             	           	
-             	<div class="progress progress-sm active">
-                <div 
-                id="barra" 
-                class="progress-bar progress-bar-success progress-bar-striped" 
-                role="progressbar" 
-                aria-valuenow="0" 
-                aria-valuemin="0" 
-                aria-valuemax="100" 
-                style="width: 0%"
-                >
-                  
-                </div>
-              </div>
-             	
-             </div>
- 
-</div>
+        <img class="img-fluid img-thumbnail" width="500" src="./paginas/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
+    </div>
 
+    <div class="mb-3">
+        <button class="btn btn-info" id="btn-editar-foto">
+            <i class="bi bi-camera-fill"></i> Editar Foto
+        </button>
+    </div>
+    <div id="editar-foto">
+                <form id="form-upload-foto" class="mb-3" action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="idContato" value="<?=$idContato?>">
+                <label class="form-label" for="arquivo">Selecione um arquivo de imagem da foto</label>
+                    <div class="input-group">
+                        <input class="form-control" type="file" name="arquivo" id="arquivo">
+                        <input class="btn btn-secondary" type="submit" value="Enviar">
+                    </div>
+
+                </form>
+                <div id="mensagem" class="mb-3 alert alert-success">
+                    Mensagem aqui.
+                </div>
+                <div id="preloader" class="progress">
+                    <div id="barra"
+                    class="progress-bar bg-danger" 
+                    role="progressbar" 
+                    style="width: 0%" 
+                    aria-valuenow="0" 
+                    aria-valuemin="0" 
+                    aria-valuemax="100">0%</div>
+                </div>  
+    </div>
+                
+</div>
 </div>

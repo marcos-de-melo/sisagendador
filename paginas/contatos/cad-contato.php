@@ -8,12 +8,11 @@
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                 <input class="form-control" type="text" name="nomeContato" required>
-               
                 <div class="valid-feedback">
-                        teste
+                    Está correto.
                 </div>
                 <div class="invalid-feedback">
-                    Please choose a username.
+                   Campo obrigatório de no máximo 255 caracteres 
                 </div>
             </div>
         </div>
@@ -22,13 +21,6 @@
             <div class="input-group">
                 <span class="input-group-text">@</span>
                 <input class="form-control" type="email" name="emailContato" required>
-                
-                <div class="valid-tooltip">
-                        teste
-                </div>
-                <div class="invalid-feedback">
-                    Please choose a username.
-                </div>
             </div>
 
         </div>
@@ -43,7 +35,7 @@
             <label class="form-label" for="enderecoContato">Endereço</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-mailbox2"></i></span>
-                <input class="form-control" type="text" name="enderecoContato">
+                <input class="form-control" type="text" name="enderecoContato" required>
             </div>
         </div>
         <div class="row">
@@ -51,8 +43,8 @@
             <label class="form-label" for="sexoContato">Sexo</label>
             <div class="input-group">
             <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
-            <select class="form-select" name="sexoContato" id="sexoContato">
-                <option selected>Selecione o sexo do aluno</option>
+            <select class="form-select" name="sexoContato" id="sexoContato" required>
+                <option selected value="">Selecione o sexo do aluno</option>
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
             </select>
@@ -63,7 +55,7 @@
             <label class="form-label" for="dataNascContato">Data de Nasc.</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                <input class="form-control" type="date" name="dataNascContato">
+                <input class="form-control" type="date" name="dataNascContato" required>
             </div>
         </div>
         </div>
