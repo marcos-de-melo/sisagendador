@@ -89,7 +89,7 @@ $dados = mysqli_fetch_assoc($rs);
        }
     ?>
     <div class="mb-3">
-        <img class="img-fluid img-thumbnail" width="500" src="./paginas/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
+        <img id="foto-contato" class="img-fluid img-thumbnail" width="200" src="./paginas/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
     </div>
 
     <div class="mb-3">
@@ -103,12 +103,12 @@ $dados = mysqli_fetch_assoc($rs);
                 <label class="form-label" for="arquivo">Selecione um arquivo de imagem da foto</label>
                     <div class="input-group">
                         <input class="form-control" type="file" name="arquivo" id="arquivo">
-                        <input class="btn btn-secondary" type="submit" value="Enviar">
+                        <input id="btn-enviar-foto" class="btn btn-secondary" type="submit" value="Enviar">
                     </div>
 
                 </form>
                 <div id="mensagem" class="mb-3 alert alert-success">
-                    Mensagem aqui.
+                    
                 </div>
                 <div id="preloader" class="progress">
                     <div id="barra"
