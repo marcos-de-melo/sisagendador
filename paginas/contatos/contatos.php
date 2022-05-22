@@ -1,3 +1,10 @@
+<?php
+// Variavel da pesquisa 
+$txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
+
+?>
+
+
 <header>
     <h3><i class="bi bi-person-square"></i> Contatos</h3>
 </header>
@@ -7,7 +14,7 @@
 <div>
     <form action="index.php?menuop=contatos" method="post">
         <div class="input-group">
-            <input class="form-control" type="text" name="txt_pesquisa">
+            <input class="form-control" type="text" name="txt_pesquisa" value="<?=$txt_pesquisa?>">
             <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
         </div>
        
@@ -34,7 +41,7 @@
             $pagina = ( isset($_GET['pagina']) ) ?(int)$_GET['pagina']:1;
             $inicio = ($quantidade * $pagina) - $quantidade;
 
-            $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
+            
 
             $sql = "SELECT 
             idContato,

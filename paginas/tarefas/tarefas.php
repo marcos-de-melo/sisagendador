@@ -1,5 +1,19 @@
+<?php
+
+    $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
+// Alterna entre status concluido ou não concluido 
+$idTarefa = (isset($_GET['idTarefa']))?$_GET['idTarefa'] :"";
+$statusTarefa =  (isset($_GET['statusTarefa']) and $_GET['statusTarefa']=='0')?'1':'0';
+
+$sql = "UPDATE tbtarefas SET statusTarefa = {$statusTarefa} WHERE idTarefa = {$idTarefa}";
+$rs = mysqli_query($conexao, $sql);
+// ----------------------------------------------
+
+?>
 <header>
     <h3><i class="bi bi-list-task"></i> Tarefas</h3>
+
+
 </header>
 <div>
     <a class="btn btn-outline-secondary mb-2" 
@@ -8,7 +22,7 @@
 <div>
     <form action="index.php?menuop=tarefas" method="post">
         <div class="input-group">
-            <input class="form-control" type="text" name="txt_pesquisa">
+            <input class="form-control" type="text" name="txt_pesquisa" value="<?=$txt_pesquisa?>">
             <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
         </div>
        
@@ -18,7 +32,6 @@
 <table class="table table-dark table-striped table-bordered table-sm">
     <thead>
         <tr>
-            
             <th>Status</th>
             <th>Título</th>
             <th>Descrição</th>
@@ -34,7 +47,7 @@
             $pagina = ( isset($_GET['pagina']) ) ?(int)$_GET['pagina']:1;
             $inicio = ($quantidade * $pagina) - $quantidade;
 
-            $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
+            
 
             $sql = "SELECT
             idTarefa, 
@@ -48,10 +61,10 @@
             tituloTarefa LIKE '%{$txt_pesquisa}%' OR 
             descricaoTarefa LIKE '%{$txt_pesquisa}%' OR
             DATE_FORMAT(dataConclusaoTarefa, '%d/%m/%Y') LIKE '%{$txt_pesquisa}%'
-            ORDER BY statusTarefa ,dataConclusaoTarefa 
+            ORDER BY statusTarefa, dataConclusaoTarefa 
             LIMIT $inicio, $quantidade
             ";
-            //echo $sql;
+          
             $rs = mysqli_query($conexao,$sql) 
             or die("Erro ao executar a consulta! Erro:" . mysqli_error($conexao));
 
@@ -62,7 +75,7 @@
         ?>
         <tr>
             <td>
-                <a class="btn btn-secondary btn-sm" href="#" >
+                <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&pagina=<?=$pagina?>&idTarefa=<?=$dados['idTarefa']?>&statusTarefa=<?=$dados['statusTarefa']?>" >
                     <?php
                         if($dados['statusTarefa']==0){
                             echo '<i class="bi bi-square"></i>';
