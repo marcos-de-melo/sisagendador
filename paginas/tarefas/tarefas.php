@@ -12,8 +12,6 @@ $rs = mysqli_query($conexao, $sql);
 ?>
 <header>
     <h3><i class="bi bi-list-task"></i> Tarefas</h3>
-
-
 </header>
 <div>
     <a class="btn btn-outline-secondary mb-2" 

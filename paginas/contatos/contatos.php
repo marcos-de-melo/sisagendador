@@ -24,6 +24,9 @@ $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
 <table class="table table-dark table-striped table-bordered table-sm">
     <thead>
         <tr>
+            <th>
+                <i class="bi bi-star-fill"></i>
+            </th>
             <th>ID</th>
             <th>Nome</th>
             <th>E-Mail</th>
@@ -55,11 +58,12 @@ $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
             ELSE
                 'NÃO ESPECIFICADO'
             END AS sexoContato,
-            DATE_FORMAT(dataNascContato, '%d/%m/%Y') AS dataNascContato 
+            DATE_FORMAT(dataNascContato, '%d/%m/%Y') AS dataNascContato,
+            flagFavoritoContato  
             FROM tbcontatos 
             WHERE 
             idContato = '{$txt_pesquisa}' or 
-            nomeContato LIKE '%{$txt_pesquisa}%' ORDER BY nomeContato ASC 
+            nomeContato LIKE '%{$txt_pesquisa}%' ORDER BY flagFavoritoContato DESC, nomeContato ASC 
             LIMIT $inicio, $quantidade
             ";
             //echo $sql;
@@ -72,6 +76,20 @@ $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
 
         ?>
         <tr>
+            <td>
+                <?php
+                if($dados["flagFavoritoContato"]==1){
+                    echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Favorito\" id=\"{$dados["idContato"]}\">
+                    <i class=\"bi bi-star-fill\"></i>
+                    </a>";
+                }else{
+                    echo "<a href=\"#\" class=\"flagFavoritoContato link-warning\" title=\"Não Favorito\" id=\"{$dados["idContato"]}\">
+                    <i class=\"bi bi-star\"></i>
+                    </a>";
+                }
+
+                ?>
+            </td>
             <td><?=$dados['idContato']?></td>
             <td class="text-nowrap"><?=$dados['nomeContato']?></td>
             <td class="text-nowrap"><?=$dados['emailContato']?></td>
