@@ -63,7 +63,10 @@ $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
             FROM tbcontatos 
             WHERE 
             idContato = '{$txt_pesquisa}' or 
-            nomeContato LIKE '%{$txt_pesquisa}%' ORDER BY flagFavoritoContato DESC, nomeContato ASC 
+            nomeContato LIKE '%{$txt_pesquisa}%' 
+            or 
+            telefoneContato LIKE '%{$txt_pesquisa}%' 
+            ORDER BY flagFavoritoContato DESC, nomeContato ASC 
             LIMIT $inicio, $quantidade
             ";
             //echo $sql;
